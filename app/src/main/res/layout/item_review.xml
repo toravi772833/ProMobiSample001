@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="data"
+            type="com.sample.app.model.movie_review.MovieReviewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/profilePicture"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                app:profileImage="@{data.multimedia.src}" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/ListText"
+                    android:hint="Title"
+                    android:singleLine="false"
+                    android:text="@{TextUtils.isEmpty(data.displayTitle) ? `--` : data.displayTitle}"
+                    android:textColor="@android:color/holo_red_dark" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/ListPlaceHolderText"
+                    android:hint="By Line"
+                    android:text="@{TextUtils.isEmpty(data.byline) ? `--` : data.byline}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/ListPlaceHolderText"
+                    android:layout_marginTop="10dp"
+                    android:hint="Short Description"
+                    android:singleLine="false"
+                    android:text="@{TextUtils.isEmpty(data.headline) ? `--` : data.headline}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/ListPlaceHolderText"
+                    android:layout_marginTop="15dp"
+                    android:text="Rating" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/ListText"
+                    android:hint="Rating"
+                    android:maxLines="2"
+                    android:singleLine="false"
+                    android:text="@{TextUtils.isEmpty(data.mpaaRating) ? `--` : data.mpaaRating}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/ListPlaceHolderText"
+                    android:layout_marginTop="15dp"
+                    android:text="Published On " />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUserName"
+                    style="@style/ListText"
+                    android:hint="Time"
+                    android:text="@{data.displayPublishDate}" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/ibViewLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/round_gray_and_border"
+                    android:padding="10dp"
+                    android:src="@drawable/icon_view" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
