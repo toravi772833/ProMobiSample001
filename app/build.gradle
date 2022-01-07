@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-parcelize'
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 31
@@ -28,6 +29,7 @@ android {
 
 
     flavorDimensions "default"
+
     productFlavors {
         Dev {
             buildConfigField 'String', 'BASE_URL', BaseURL
@@ -88,4 +90,8 @@ dependencies {
     implementation "androidx.room:room-runtime:2.4.0"
     kapt "androidx.room:room-compiler:2.4.0"
     implementation "androidx.room:room-ktx:2.4.0"
+
+    // Dagger Hilt for Dependency Injection
+    implementation "com.google.dagger:hilt-android:2.38.1"
+    kapt "com.google.dagger:hilt-compiler:2.38.1"
 }

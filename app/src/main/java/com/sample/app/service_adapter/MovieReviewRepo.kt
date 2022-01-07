@@ -1,31 +1,31 @@
 package com.sample.app.service_adapter
 
+import android.content.Context
 import com.sample.app.BuildConfig
-import com.sample.app.application.SampleApplication
 import com.sample.app.common.CommonUtils
 import com.sample.app.database.DatabaseHelperImpl
-import com.sample.app.database.NewYorkTimesDB
 import com.sample.app.model.movie_review.MovieReviewModel
 import com.sample.app.network.APIClient
 import com.sample.app.network.APIConstants
 import com.sample.app.network.APIRequest
 import com.sample.app.network.error.ErrorHandling
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.HttpException
 import rx.android.schedulers.AndroidSchedulers
+import javax.inject.Inject
 
-class MovieReviewRepo(
-    private val application: SampleApplication,
-    private val coroutineScope: CoroutineScope
+@ViewModelScoped
+class MovieReviewRepo @Inject constructor(
+    private val application: Context,
+    private val coroutineScope: CoroutineScope,
+    private val databaseHelper: DatabaseHelperImpl
 ) {
-
-    private val databaseHelper by lazy { DatabaseHelperImpl(NewYorkTimesDB.getDatabase(application)) }
 
     private var currentOffset = 0
     var hasNextPage = true
-
 
     /**
      * This act like an REPO

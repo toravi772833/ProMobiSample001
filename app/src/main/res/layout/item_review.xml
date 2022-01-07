@@ -43,31 +43,31 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/ListText"
-                    android:hint="Title"
+                    android:hint="--"
                     android:singleLine="false"
                     android:text="@{TextUtils.isEmpty(data.displayTitle) ? `--` : data.displayTitle}"
                     android:textColor="@android:color/holo_red_dark" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/ListPlaceHolderText"
-                    android:hint="By Line"
+                    android:hint="---"
                     android:text="@{TextUtils.isEmpty(data.byline) ? `--` : data.byline}" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/ListPlaceHolderText"
                     android:layout_marginTop="10dp"
-                    android:hint="Short Description"
+                    android:hint="--"
                     android:singleLine="false"
                     android:text="@{TextUtils.isEmpty(data.headline) ? `--` : data.headline}" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/ListPlaceHolderText"
                     android:layout_marginTop="15dp"
-                    android:text="Rating" />
+                    android:text="@string/str_rating" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/ListText"
-                    android:hint="Rating"
+                    android:hint="--"
                     android:maxLines="2"
                     android:singleLine="false"
                     android:text="@{TextUtils.isEmpty(data.mpaaRating) ? `--` : data.mpaaRating}" />
@@ -75,12 +75,12 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/ListPlaceHolderText"
                     android:layout_marginTop="15dp"
-                    android:text="Published On " />
+                    android:text="@string/str_published_on" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvUserName"
                     style="@style/ListText"
-                    android:hint="Time"
+                    android:hint="--"
                     android:text="@{data.displayPublishDate}" />
 
                 <androidx.appcompat.widget.AppCompatImageButton

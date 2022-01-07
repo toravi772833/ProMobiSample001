@@ -1,6 +1,5 @@
 package com.sample.app.model.movie_review
 
-
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
@@ -44,5 +43,4 @@ data class MovieReviewModel(
     val buttonTitle: String
         get() = if (link?.suggestedLinkText.isNotEmpty()) link?.suggestedLinkText.getTrim()
             .replace("Read the New York Times", "View") else "View Link"
-
 }
