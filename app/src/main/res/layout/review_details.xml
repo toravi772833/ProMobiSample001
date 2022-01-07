@@ -63,7 +63,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/ListText"
                             android:layout_gravity="center"
-                            android:hint="Title"
+                            android:hint="@string/str_title"
                             android:singleLine="false"
                             android:text="@{TextUtils.isEmpty(data.displayTitle) ? `--` : data.displayTitle}"
                             android:textColor="@android:color/black"
@@ -73,7 +73,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/ListPlaceHolderText"
                             android:layout_gravity="center"
-                            android:hint="By Line"
+                            android:hint="--"
                             android:text="@{TextUtils.isEmpty(data.byline) ? `--` : data.byline}" />
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -88,7 +88,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/ListText"
                             android:layout_marginTop="20dp"
-                            android:hint="HeadLine"
+                            android:hint="---"
                             android:maxLines="2"
                             android:singleLine="false"
                             android:text="@{TextUtils.isEmpty(data.headline) ? `--` : data.headline}"
@@ -97,7 +97,7 @@
 
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/ListPlaceHolderText"
-                            android:hint="Summary Note"
+                            android:hint="---"
                             android:singleLine="false"
                             android:text="@{TextUtils.isEmpty(data.summaryShort) ? `--` : data.summaryShort}"
                             android:textColor="@color/colorPrimaryDark"
@@ -106,11 +106,11 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/ListPlaceHolderText"
                             android:layout_marginTop="15dp"
-                            android:text="Rating" />
+                            android:text="@string/str_rating" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/ListText"
-                            android:hint="Rating"
+                            android:hint="--"
                             android:maxLines="2"
                             android:singleLine="false"
                             android:text="@{TextUtils.isEmpty(data.mpaaRating) ? `--` : data.mpaaRating}" />
@@ -118,21 +118,21 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/ListPlaceHolderText"
                             android:layout_marginTop="15dp"
-                            android:text="Published On " />
+                            android:text="@string/str_published_on" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/ListText"
-                            android:hint="Time"
+                            android:hint="--"
                             android:text="@{data.displayPublishDate}" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/ListPlaceHolderText"
                             android:layout_marginTop="15dp"
-                            android:text="Opening Date " />
+                            android:text="@string/str_opening_date" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/ListText"
-                            android:hint="Opening Date"
+                            android:hint="---"
                             android:text="@{data.displayOpeningDate}" />
 
                         <androidx.appcompat.widget.AppCompatTextView

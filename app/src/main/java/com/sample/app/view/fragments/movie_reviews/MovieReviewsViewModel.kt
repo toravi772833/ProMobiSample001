@@ -1,16 +1,24 @@
 package com.sample.app.view.fragments.movie_reviews
 
+import android.content.Context
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sample.app.application.SampleApplication
 import com.sample.app.common.CommonUtils
 import com.sample.app.components.base_components.BaseViewModel
+import com.sample.app.database.DatabaseHelperImpl
 import com.sample.app.model.movie_review.MovieReviewModel
 import com.sample.app.service_adapter.MovieReviewRepo
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
-class MovieReviewsViewModel(private val application: SampleApplication) : BaseViewModel(application) {
+@HiltViewModel
+class MovieReviewsViewModel @Inject constructor(@ApplicationContext private val application: Context) : BaseViewModel(application) {
 
+    @Inject
+    lateinit var databaseHelper: DatabaseHelperImpl
     val emptyViewMessage = ObservableField("")
 
     val detailsList = MutableLiveData<List<MovieReviewModel>>()
@@ -19,7 +27,7 @@ class MovieReviewsViewModel(private val application: SampleApplication) : BaseVi
     val showBottomLoading = ObservableField(false)
     val showMainLoading = ObservableField(false)
 
-    private val dataRepo by lazy { MovieReviewRepo(application, viewModelScope) }
+    private val dataRepo by lazy { MovieReviewRepo(application, viewModelScope, databaseHelper) }
 
     fun getAllList(isSilent: Boolean = false) {
         if (!isSilent) showMainLoading.set(true)

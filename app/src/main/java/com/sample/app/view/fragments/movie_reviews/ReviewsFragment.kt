@@ -1,21 +1,22 @@
 package com.sample.app.view.fragments.movie_reviews
 
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.sample.app.R
-import com.sample.app.application.SampleApplication
 import com.sample.app.common.Alert
 import com.sample.app.common.CommonUtils
-import com.sample.app.common.getViewModel
 import com.sample.app.components.base_components.BaseFragmentX
 import com.sample.app.databinding.ReviewsListScreenBinding
 import com.sample.app.model.movie_review.MovieReviewModel
 import com.sample.app.view.adapter.MovieReviewsAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ReviewsFragment : BaseFragmentX<ReviewsListScreenBinding>(R.layout.reviews_list_screen) {
 
-    private val viewModel by lazy { getViewModel(this, MovieReviewsViewModel(mActivity.application as SampleApplication)) }
+    private val viewModel by viewModels<MovieReviewsViewModel>()
     private val adapter by lazy { MovieReviewsAdapter(mActivity, viewModel::requestNextPageList, ::openDetailsView) }
 
     override fun initComponents() {
@@ -57,7 +58,6 @@ class ReviewsFragment : BaseFragmentX<ReviewsListScreenBinding>(R.layout.reviews
             }
         })
     }
-
 
     /**
      * Project unable to build with Safe args some Android open issue with Latest gradel plug in
